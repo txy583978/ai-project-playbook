@@ -59,3 +59,11 @@
 ## License
 
 MIT
+## 贡献与反馈
+
+如果这套模板对你有帮助，或者你有任何建议、发现了bug，欢迎：
+- 提 [Issue](https://github.com/txy583978/ai-project-playbook/issues) 讨论问题
+- 点个Star支持一下
+- Fork后改进，提Pull Request
+
+你的每一条建议都会让这套模板更好。

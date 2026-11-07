@@ -51,13 +51,18 @@
 - **AI行为约束**：避免AI过度设计、硬编码、分层混乱
 - **专业标准**：HTTP状态码规范、安全越权、测试分层、部署专业项
 - **通用示例**：用products示例，不绑定具体项目
+- **项目交接卡**：每步走完输出交接卡，跨会话不中断，不用从头再说一遍
+- **多栈支持**：通用原则 + FastAPI/Django/Spring Boot示例，不是FastAPI专属
 
 ## 技术栈示例
 
-- 后端：FastAPI / Django
-- 数据库：MySQL
-- 前端：HTML/CSS/JS / Vue + ElementUI
+正文是通用原则，每个模板末尾有技术栈特定示例：
+- Python栈：FastAPI / Django
+- Java栈：Spring Boot
+- Node栈：Express
+- 数据库：MySQL / PostgreSQL
 - 部署：Nginx + Ubuntu
+
 
 ## 参考灵感
 

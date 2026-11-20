@@ -73,6 +73,7 @@
 - SECRET_KEY不能硬编码，从环境变量读
 - DEBUG在生产必须是False
 - ALLOWED_HOSTS生产要配具体域名，不能写*
+- **prod 护栏原则（语言无关）**：dev 兜底默认值必须成对配 fail-closed 护栏——配置缺失或仍取兜底默认值时拒绝启动，不带默认值跑起来。原则见第 5 步与跨栈模板插件；Django 在 settings 哪一层做校验的具体写法，待真实 Django 项目实测后补。
 
 ---
 

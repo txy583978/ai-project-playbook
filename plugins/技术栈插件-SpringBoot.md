@@ -113,6 +113,7 @@ src/main/java/com/你的项目名/
 
 - 打包成jar包，用java -jar跑
 - 生产用外部配置，不要把配置打在包里
+- **prod 护栏原则（语言无关）**：dev 兜底默认值必须成对配 fail-closed 护栏——配置缺失或仍取兜底默认值时拒绝启动。原则见第 5 步与跨栈模板插件；Spring 在 @ConfigurationProperties 还是启动监听器里校验的具体写法，待真实 Spring 项目实测后补。
 - 必须配HTTPS
 - 数据库连接池用HikariCP（默认就是）
 

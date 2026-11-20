@@ -116,6 +116,7 @@
 | 写死user_id=1但没插测试用户 | 外键约束报错 | 测试fixture里先插对应id的用户 |
 | .dict()用在Pydantic v2 | 已废弃，有警告 | 改成.model_dump() |
 | main.py末尾没有启动块 | python main.py跑不起来 | 加if __name__ == "__main__" |
+| `/docs` 白屏，但 `/openapi.json` 能正常返回 | FastAPI 默认 Swagger UI 的 CSS/JS 从 jsdelivr CDN 加载，网络受限/离线时脚本加载失败，页面只剩空 div；后端接口本身没问题 | 先请求 `/openapi.json`（200 且有 JSON）区分是后端问题还是静态资源问题；CDN 不可达时把 Swagger 资源换到可达镜像，或自托管 swagger-ui-dist 文件；调试也可直接用 Apifox 或前端联调，不依赖 `/docs` |
 
 ---
 
@@ -219,6 +220,11 @@ def client():
 | 路由里catch Exception吞错误 | 把500变成200，出问题找不到 | 抛HTTPException带正确状态码 |
 | Field(ge=18, default=None) | 约束和默认值矛盾 | 要么必填要么可选，别写一起 |
 | 所有配置塞一个BaseSettings | 项目大了难维护 | 按模块分配置 |
+| text()/原生SQL拼接用户输入 | SQL注入 | 用ORM参数化查询，不要拼字符串 |
+| os.system/subprocess 用shell=True拼接用户输入 | 命令注入 | 用参数列表形式调用，不走shell |
+| 用户输入拼文件路径open() | 路径穿越，读到目录外文件 | 限制在固定目录内，校验文件名 |
+| pickle / yaml.load 反序列化不可信数据 | 反序列化漏洞 | 不用pickle；yaml改用safe_load |
+| 业务接口漏挂 JWT 鉴权依赖 | 未登录也能调 | 统一加get_current_user依赖，不裸奔 |
 
 ---
 

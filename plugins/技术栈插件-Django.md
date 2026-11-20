@@ -133,6 +133,11 @@
 | 业务逻辑写在views里 | 没法复用，不好测 | 抽到services里 |
 | 用原始SQL拼接 | SQL注入风险 | 用ORM或参数化查询 |
 | 没做权限校验 | 越权访问 | 加permission_classes |
+| mark_safe / safe / autoescape off 包裹用户内容 | XSS，用户输入脚本被执行 | 模板默认转义，用户内容不要手动标记安全 |
+| 滥用 csrf_exempt | CSRF 风险 | 除纯接口外不要豁免CSRF |
+| 请求多字段直接塞进ORM/Model | 批量赋值，改了不该改的字段 | 用Serializer白名单字段校验 |
+| 用户输入拼文件路径open() | 路径穿越，读到目录外文件 | 限制在固定目录内，校验文件名 |
+| pickle / yaml.load 反序列化不可信数据 | 反序列化漏洞 | 不用pickle；yaml改用safe_load |
 
 ---
 

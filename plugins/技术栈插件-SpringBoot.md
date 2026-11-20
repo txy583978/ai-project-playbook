@@ -129,6 +129,10 @@ src/main/java/com/你的项目名/
 | 直接返回Entity不设DTO | 暴露敏感字段 | 加DTO转换 |
 | SQL拼接字符串 | SQL注入 | 用MyBatis参数化或者JPA |
 | 全局异常没处理 | 报错返回乱七八糟 | 加@RestControllerAdvice |
+| Runtime.exec/ProcessBuilder 拼接用户输入 | 命令注入 | 用参数数组传参，不拼命令字符串 |
+| 用户输入拼文件路径 new File() | 路径穿越，读到目录外文件 | 限制在固定目录内，校验文件名 |
+| ObjectInputStream 反序列化不可信数据 | 反序列化漏洞 | 不用JDK原生反序列化，用JSON DTO |
+| 请求体全量拷贝到Entity（BeanUtils.copyProperties） | 批量赋值，改了不该改的字段 | 用DTO白名单字段接收，再转Entity |
 
 ---
 

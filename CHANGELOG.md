@@ -5,7 +5,7 @@
 
 ## v0.3 — 2026-11-20（第二轮回跑后增量，未打 tag）
 
-> 基线：v0.2（tag 指向 `c79eeb0`）。本版改动来自 nl2sql-analytics 一期第 11 步第二轮回跑实测，本地 commit 不 push，tag 时机另行拍板。
+> 基线：v0.2（tag 指向 `c79eeb0`）。本版改动来自 nl2sql-analytics 一期第 11 步第二轮回跑实测，本地 commit `443c07f` 不 push，tag 时机另行拍板。
 
 ### 模板改动
 

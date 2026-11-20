@@ -118,6 +118,8 @@
 | .dict()用在Pydantic v2 | 已废弃，有警告 | 改成.model_dump() |
 | main.py末尾没有启动块 | python main.py跑不起来 | 加if __name__ == "__main__" |
 | `/docs` 白屏，但 `/openapi.json` 能正常返回 | FastAPI 默认 Swagger UI 的 CSS/JS 从 jsdelivr CDN 加载，网络受限/离线时脚本加载失败，页面只剩空 div；后端接口本身没问题 | 先请求 `/openapi.json`（200 且有 JSON）区分是后端问题还是静态资源问题；CDN 不可达时把 Swagger 资源换到可达镜像，或自托管 swagger-ui-dist 文件；调试也可直接用 Apifox 或前端联调，不依赖 `/docs` |
+| 给已存在表加列后测试全绿，真实库插日志报 Unknown column | `create_all` 只建新表、不改已存在的表；SQLite 测试库每次重建自动带新列，掩盖了真实库缺列 | 先手工 `ALTER TABLE ... ADD COLUMN`（带默认值回填存量行），再起服务；真实库单独核对列已存在，不要只看测试库全绿 |
+| 改完代码重测，新逻辑返回结果完全没变 | 旧 uvicorn 进程占着端口，新进程端口冲突退出，请求仍打到旧代码 | 起服务前先查端口监听进程、确认旧进程已停；改代码后核对运行进程加载的是新代码，别拿旧进程返回当新代码结果 |
 
 ---
 

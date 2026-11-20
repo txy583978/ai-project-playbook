@@ -68,7 +68,7 @@
 
 ### 3.1 配置管理
 - 所有配置都从环境变量读，不能硬编码
-- config.py必须给默认值，没有.env文件也能启动
+- config.py 给开发默认值，没有 .env 也能启动；但 prod 环境下仍取到兜底默认值必须拒绝启动（见坑表护栏条）
 - 用pydantic-settings的BaseSettings，不要自己读os.environ
 
 ### 3.2 数据库
@@ -112,6 +112,7 @@
 | bcrypt装最新版 | passlib 1.7.4兼容报错 | requirements里锁死bcrypt==4.0.1 |
 | Python用最新版本 | pydantic-core要现场编译，失败 | 用3.10~3.11 |
 | config.py不给默认值 | 没有.env就启动报错 | 所有配置项给开发默认值 |
+| dev 兜底默认值带进 prod | 部署漏配也不报错，默认密钥 / 白名单直接上线 | prod/production 下仍取兜底默认值时启动即拒绝（非 0 退出）；未配置与取到默认值两种都判不安全；密钥、数据库密码、CORS 白名单必查；配 1 条拒绝启动用例 |
 | main.py顶层create_all | 测试import时就连真库 | 把建表放到lifespan里 |
 | 写死user_id=1但没插测试用户 | 外键约束报错 | 测试fixture里先插对应id的用户 |
 | .dict()用在Pydantic v2 | 已废弃，有警告 | 改成.model_dump() |

@@ -1,6 +1,6 @@
 # AI Project Playbook | AI全栈项目开发实战手册
 
-> 版本：v0.4（2026-11-21，本地 commit，未打 tag、未 push）｜步骤编号与改动记录见 [CHANGELOG.md](CHANGELOG.md)
+> 版本：v0.4（2026-11-21，annotated tag 已打，已推送 origin/main）｜步骤编号与改动记录见 [CHANGELOG.md](CHANGELOG.md)
 
 一套从需求分析到部署上线的完整AI辅助项目开发模板，配合AI写代码，让你从0到1做出专业级项目。
 
